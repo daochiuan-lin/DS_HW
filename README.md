@@ -1,3 +1,3 @@
- www.imgur.com/a/G6rU8
- ↑↑↑
- explain in image
+[Click this](https://tinyurl.com/yc64tuaa)
+ <<<
+further explaination
