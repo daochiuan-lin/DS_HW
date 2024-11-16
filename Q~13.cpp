@@ -26,6 +26,7 @@ public:
       int t;
       if(i*2+2 > mh.size()-1) t = i*2+1;
       else t = (mh[i*2+1] > mh[i*2+2])?i*2+1:i*2+2;
+      if(mh[t] < mh[i]) break;
       swap(mh[i],mh[t]);
       i = t;
     }
