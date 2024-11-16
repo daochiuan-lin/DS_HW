@@ -51,6 +51,10 @@ public:
         int i = 0,m = 0;
         T curmin = mmh[i];
         while(1){
+            if( i*2+1 < mmh.size())
+                if(mmh[i] > mmh[i*2+1]) swap(mmh[i],mmh[i*2+1]);
+            if(i*2+2 < mmh.size())
+                if(mmh[i] > mmh[i*2+2]) swap(mmh[i],mmh[i*2+2]);
             for(int j = 1;j < 5;j++){
                 if((i*2+1)*2+j >= mmh.size()) break;
                 if(mmh[(i*2+1)*2+j] < curmin) {
@@ -74,12 +78,11 @@ public:
         if(mmh.size() < 2) return;
         int i = (mmh[1] < mmh[2])?1:2 ,m = 0;
         T curmax = mmh[i];
-        if(mmh.size() < 8){
-            if(mmh[i] < mmh[i*2+1] && i*2+1 < mmh.size()) swap(mmh[i],mmh[i*2+1]);
-            if(mmh[i] < mmh[i*2+2] && i*2+2 < mmh.size()) swap(mmh[i],mmh[i*2+2]);
-            return;
-        }
         while(1){
+            if( i*2+1 < mmh.size())
+                if(mmh[i] < mmh[i*2+1]) swap(mmh[i],mmh[i*2+1]);
+            if(i*2+2 < mmh.size())
+                if(mmh[i] < mmh[i*2+2]) swap(mmh[i],mmh[i*2+2]);
             m = 0;
             for(int j = 1;j < 5;j++){
                 if((i*2+1)*2+j >= mmh.size()) break;
@@ -95,10 +98,7 @@ public:
     }
 
     bool inMin(T i){
-        if(static_cast<int>(floor(log2(i+1)))%2 == 0){
-            return true;
-        }
-        return false;
+        return !(__lg(++i) % 2);
     }
     
     void check(){
